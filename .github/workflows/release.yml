@@ -21,13 +21,14 @@ jobs:
         run: |
           TAG="${{ github.ref_name }}"
           cat << 'NOTES' > release-notes.md
-          ### iBYD v0.25
+          ### iBYD v0.30
 
           Official public release for iBYD (Smart BYD Assistant & Vehicle Dashboard).
 
           #### What's New:
-          - 🌐 **RTL & Side Nav Language Adaptation**: Side navigation rail now dynamically adapts to language (Right side for Arabic, Persian, and Kurdish; Left side for English). Brand logo identity maintains correct orientation (`[logo] iBYD`).
-          - ☀️ **Sunlight High-Contrast Mode**: Light theme tuned for direct car windshield sunlight with 15:1+ contrast text (`#0F172A`) and vivid automotive pigments; anti-glare dark theme for night driving.
-          - ⚡ **Fluid Cockpit Animations**: Smooth cross-fade screen transitions, animated side rail selection pill, breathing neon charging glow on battery card, smooth horizontal battery level track, animated gear shifts (P/R/N/D), and tactile card touch feedback.
+          - ☀️ **Light Mode Visibility Overhaul**: Replaced low-contrast and washed-out elements across Screens, Custom Dials, Settings, and Dashboard tabs with high-contrast automotive pigments and adaptive surfaces.
+          - 🔌 **Dedicated ADB Status Pill**: Added an explicit ADB connection indicator right beside AEB Active on the dashboard top bar (`ADB CONNECTED` vs `LOCAL SERVICE`).
+          - 🛡️ **Anti-Force-Stop & Crash Hardening**: Implemented coroutine exception handlers and safe foreground service startup guards against background execution limits.
           NOTES
-          gh release create "$TAG" iBYD-v0.25.apk --title "iBYD $TAG" --notes-file release-notes.md
+          APK_FILE=$(ls iBYD-*.apk | head -n 1)
+          gh release create "$TAG" "$APK_FILE" --title "iBYD $TAG" --notes-file release-notes.md
