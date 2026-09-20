@@ -15,19 +15,20 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Create Release and Upload Asset
+      - name: Create Release Notes and Publish
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           TAG="${{ github.ref_name }}"
-          gh release create "$TAG" iBYD-v0.15.apk \
-            --title "iBYD $TAG" \
-            --notes "### iBYD $TAG
+          cat << 'NOTES' > release-notes.md
+          ### iBYD
 
-Official public release for iBYD (BYD Assistant & Vehicle Dashboard).
+          Official public release for iBYD (BYD Assistant & Vehicle Dashboard).
 
-#### What's New:
-- 🗺️ **Cluster Projector Default**: Changed default cluster projection app from Yandex Navigator to **Waze** (\`com.waze\`).
-- ⚡ **Auto-migration**: Seamlessly migrates existing cluster projection defaults to Waze while preserving custom user selections.
-- 🌐 **Full Multi-language Support**: Complete translation parity and immediate RTL direction support across Arabic, Kurdish (Sorani & Badini), Persian, and English.
-- 🚀 **Performance & Stability**: Enhanced cluster display management and bug fixes."
+          #### What's New:
+          - 🗺️ **Cluster Projector Default**: Changed default cluster projection app from Yandex Navigator to **Waze** (`com.waze`).
+          - ⚡ **Auto-migration**: Seamlessly migrates existing cluster projection defaults to Waze while preserving custom user selections.
+          - 🌐 **Full Multi-language Support**: Complete translation parity and immediate RTL direction support across Arabic, Kurdish (Sorani & Badini), Persian, and English.
+          - 🚀 **Performance & Stability**: Enhanced cluster display management and bug fixes.
+          NOTES
+          gh release create "$TAG" iBYD-v0.15.apk --title "iBYD $TAG" --notes-file release-notes.md
