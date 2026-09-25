@@ -21,14 +21,14 @@ jobs:
         run: |
           TAG="${{ github.ref_name }}"
           cat << 'NOTES' > release-notes.md
-          ### iBYD v0.65
+          ### iBYD v0.80
 
           Official public release for iBYD (Smart BYD Assistant & Vehicle Dashboard).
 
           #### What's New:
-          - 🏎️ **Dual-Split Cockpit Dashboard**: Redesigned primary Dashboard into a dual-pane layout allowing simultaneous execution of any Android application (Maps, Spotify, Media) in an embedded virtual display split alongside real-time car telemetry, diagnostics, and battery status.
-          - 🎨 **Adaptive Theme Reactivity**: Full dynamic theme synchronization across Cockpit TopBar, Desktop Floating Overlay, Live Radio Equalizer PiP, Automotive Launcher, and UI pills.
-          - ⚡ **Performance & Core Architecture**: Streamlined vehicle telemetry pipeline, crash-hardening for foreground services, and updated build toolchain.
+          - 🔄 **Enhanced Software Update Dialog**: Dedicated scrollable changelog container with smart markdown bullet formatting, version pill badge, dual-tone download progress bar, and modern automotive glassmorphism.
+          - 🎙️ **Voice Agent Localization**: Streamlined voice settings to English and Arabic with seamless backward compatibility.
+          - 📱 **Recent Apps Priority**: Dashboard app cockpit and Splitscreen app selector now automatically feature the 3 most recently selected applications at the top of the list with a "Recent" badge.
           NOTES
           APK_FILE=$(ls iBYD-*.apk | head -n 1)
           gh release create "$TAG" "$APK_FILE" --title "iBYD $TAG" --notes-file release-notes.md
