@@ -4,6 +4,20 @@ All notable changes, new features, and improvements to **iBYD** are documented i
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.03-beta] - 2026-09-29
+
+### 🎙️ Siri / Apple Intelligence Liquid Aurora Voice Overlay & Audio Focus Ducking
+- **Futuristic AI Glass Design**: Redesigned `ListeningOverlay` with glowing liquid AI orb visualizer (cyan, indigo, emerald, neon pink), rotating aura halo, dynamic gradient borders, and frosted glassmorphism styling.
+- **Automotive Audio Focus Ducking**: Automatically ducks background vehicle media playback (Spotify, Radio, YouTube) by ~70% during voice listening for crystal-clear microphone audio recording, and restores media volume upon session finish.
+- **Dynamic Audio Amplitude Visualizer**: Connected real-time microphone volume (`audioLevel`) directly to GPU hardware-accelerated (`graphicsLayer`) waveform bars.
+- **Speaker Voice Calibration Wizard**: Added 5-Sentence Voice Calibration Wizard for driver accent and cadence adaptation with strict sentence verification.
+- **Smart Auto-Dismiss & Interactivity**: Added 8-second auto-dismiss timeout after agent responses; touching or dragging the overlay instantly resets/cancels the timer.
+- **Screen Boundary Clamping**: Clamped overlay drag coordinates (`x, y`) within screen edges, preventing overlay clipping on automotive head unit displays.
+- **Custom Agent Name Support**: Dynamically resolves custom wake/display names set in Settings (`agent_name` in `voice` SharedPreferences, e.g., *"BYD AI"*, *"Jarvis"*).
+- **60 FPS Performance Optimization**: Removed `animateContentSize` system window conflicts and replaced smooth scroll coroutines with direct scroll for 100% butter-smooth 60 FPS performance.
+
+---
+
 ## [0.02-beta] - 2026-09-28
 
 ### 🌟 What's New & Fixed in v0.02-beta
